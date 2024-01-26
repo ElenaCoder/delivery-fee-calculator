@@ -9,6 +9,7 @@ const DeliveryFeeCalculator1: React.FC = () => {
         AmountOfItems: '',
         OrderTime: '',
     });
+    const [deliveryFee, setDeliveryFee] = useState<number | null>(null);
 
     const inputs = [
         {
@@ -74,6 +75,12 @@ const DeliveryFeeCalculator1: React.FC = () => {
                     />
                 ))}
                 <button>Calculate</button>
+                <div className='deliveryFeeResult'>
+                    <span>{`Delivery Fee: `}</span>
+                    <span>
+                        {`${deliveryFee?.toFixed(2) ?? '0.00'} €`}
+                    </span>
+                </div>
             </form>
         </div>
     );
