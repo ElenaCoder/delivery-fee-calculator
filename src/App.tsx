@@ -1,14 +1,12 @@
 import './App.css'
+import DeliveryFeeCalculator from './components/DeliveryFeeCalculator'
 
-function App() {
-
+const App: React.FC = () => {
   return (
-    <>
-      <div>
-        <h1>Initial project setup</h1>
-      </div>
-    </>
-  )
-}
+    <div className='app'>
+      <DeliveryFeeCalculator />
+    </div>
+  );
+};
 
 export default App
