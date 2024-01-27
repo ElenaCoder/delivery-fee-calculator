@@ -1,19 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 import './DeliveryFeeCalculator.css';
-import FormInput from './FormInput';
+import FormInput, { InputProps } from './FormInput';
 
-const DeliveryFeeCalculator1: React.FC = () => {
-    const [values, setValues] = useState({
+type FormValues = {
+    CartValue: string;
+    DeliveryDistance: string;
+    AmountOfItems: string;
+    OrderTime: string;
+};
+
+const DeliveryFeeCalculator: React.FC = () => {
+    const initialFormValues: FormValues = {
         CartValue: '',
         DeliveryDistance: '',
         AmountOfItems: '',
         OrderTime: '',
-    });
+    };
+    const [values, setValues] = useState<FormValues>(initialFormValues);
     const [deliveryFee, setDeliveryFee] = useState<number | null>(null);
 
-    const inputs = [
+    const inputs: InputProps[] = [
         {
-            id: 1,
+            id: '1',
             name: 'CartValue',
             type: 'CartValue',
             placeholder: 'CartValue',
@@ -21,9 +29,11 @@ const DeliveryFeeCalculator1: React.FC = () => {
             label: 'Cart value (€)',
             required: true,
             pattern: '^(0(?:.[0-9]{1,2})?|[1-9]d*(?:.[0-9]{0,2})?)$',
+            value: values.CartValue,
+            onChange: (e) => onChange(e),
         },
         {
-            id: 2,
+            id: '2',
             name: 'DeliveryDistance',
             type: 'DeliveryDistance',
             placeholder: 'DeliveryDistance',
@@ -32,9 +42,11 @@ const DeliveryFeeCalculator1: React.FC = () => {
             label: 'Delivery distance (meters)',
             required: true,
             pattern: '^[1-9]+$',
+            value: values.DeliveryDistance,
+            onChange: (e) => onChange(e),
         },
         {
-            id: 3,
+            id: '3',
             name: 'AmountOfItems',
             type: 'AmountOfItems',
             placeholder: 'AmountOfItems',
@@ -43,21 +55,26 @@ const DeliveryFeeCalculator1: React.FC = () => {
             label: 'Amount of items',
             required: true,
             pattern: '^[0-9]+$',
+            value: values.AmountOfItems,
+            onChange: (e) => onChange(e),
         },
         {
-            id: 4,
+            id: '4',
             name: 'OrderTime',
             type: 'date',
             placeholder: 'OrderTime',
             label: 'Order Time',
+            value: values.OrderTime,
+            onChange: (e) => onChange(e),
         },
     ];
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
+        // Add your logic for calculating delivery fee here
     };
 
-    const onChange = (e) => {
+    const onChange = (e: ChangeEvent<HTMLInputElement>): void => {
         setValues({ ...values, [e.target.name]: e.target.value });
     };
     console.log(values);
@@ -70,20 +87,18 @@ const DeliveryFeeCalculator1: React.FC = () => {
                     <FormInput
                         key={input.id}
                         {...input}
-                        value={values[input.name]}
+                        value={values[input.name as keyof FormValues]}
                         onChange={onChange}
                     />
                 ))}
                 <button>Calculate</button>
                 <div className='deliveryFeeResult'>
                     <span>{`Delivery Fee: `}</span>
-                    <span>
-                        {`${deliveryFee?.toFixed(2) ?? '0.00'} €`}
-                    </span>
+                    <span>{`${deliveryFee?.toFixed(2) ?? '0.00'} €`}</span>
                 </div>
             </form>
         </div>
     );
 };
 
-export default DeliveryFeeCalculator1;
+export default DeliveryFeeCalculator;
