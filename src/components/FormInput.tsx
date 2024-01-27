@@ -1,26 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, InputHTMLAttributes } from 'react';
 import './FormInput.css';
 
-const FormInput: React.FC = (props) => {
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+    id: string;
+    name: string;
+    type: string;
+    placeholder?: string;
+    errorMessage?: string;
+    label: string;
+    required?: boolean;
+    pattern?: string;
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const FormInput: React.FC<InputProps> = (props: InputProps) => {
     const [focused, setFocused] = useState(false);
 
-    const { label, errorMessage, onChange, id, ...otherInputProps } =
+    const { label, errorMessage, onChange, ...otherInputProps } =
         props;
 
-    const handleFocus = (e) => {
-        setFocused(true);
-    };
-
     return (
-        <div className='formInput'>
+        <div className={`formInput ${focused ? 'focused' : ''}`}>
             <label>{label}</label>
             <input
                 {...otherInputProps}
                 onChange={onChange}
                 required
-                onBlur={handleFocus}
+                onBlur={() => setFocused(true)}
                 onFocus={() => otherInputProps.name === 'OrderTime' && setFocused(true)}
-                focused={focused.toString()}
             ></input>
             <span>{errorMessage}</span>
         </div>

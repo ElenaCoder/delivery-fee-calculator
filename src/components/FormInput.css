@@ -24,10 +24,10 @@ span {
     visibility: hidden;
 }
 
-input:invalid[focused='true'] {
+.formInput.focused input:invalid {
     border: 1px solid rgb(219, 43, 43);
 }
 
-input:invalid[focused='true'] ~ span {
+.formInput.focused input:invalid ~ span {
     visibility: visible;
 }
