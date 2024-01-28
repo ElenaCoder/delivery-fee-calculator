@@ -12,6 +12,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
     pattern?: string;
     value: string;
     onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    'data-test-id':string
 }
 
 const FormInput: React.FC<InputProps> = (props: InputProps) => {
