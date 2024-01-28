@@ -5,5 +5,7 @@ export function isDuringRushHours(date: Date): boolean {
     const rushHoursStart: number = 15;
     const rushHoursEnd: number = 19;
 
-    return isFriday && (rushHoursStart <= currentHour && currentHour < rushHoursEnd);
+    return (
+        isFriday && rushHoursStart <= currentHour && currentHour < rushHoursEnd
+    );
 }
