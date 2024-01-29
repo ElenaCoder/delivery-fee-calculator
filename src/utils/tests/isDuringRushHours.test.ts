@@ -1,4 +1,4 @@
-import { isDuringRushHours } from './isDuringRushHours';
+import { isDuringRushHours } from '../isDuringRushHours';
 
 // Test cases for isDuringRushHours function
 describe('isDuringRushHours', () => {

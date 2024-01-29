@@ -1,4 +1,4 @@
-import { calculateDistanceFee } from './calculateDistanceFee.ts';
+import { calculateDistanceFee } from '../calculateDistanceFee.ts';
 
 describe('calculateDistanceFee', () => {
     const testCases = [

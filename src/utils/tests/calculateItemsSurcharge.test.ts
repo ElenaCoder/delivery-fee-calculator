@@ -1,4 +1,4 @@
-import { calculateItemsSurcharge } from './calculateItemsSurcharge.ts';
+import { calculateItemsSurcharge } from '../calculateItemsSurcharge.ts';
 
 describe('calculateItemsSurcharge', () => {
     const testCases = [
