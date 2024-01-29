@@ -79,6 +79,7 @@ Due to the fact that certain requirements were not strictly defined the applicat
 
 ## Project Structure
 
+```
 │   ...
 ├── src
 │   ├── components
@@ -103,6 +104,7 @@ Due to the fact that certain requirements were not strictly defined the applicat
 │   ...
 ├── package.json
 └── README.md
+```
 
 ## Inspirations
 
