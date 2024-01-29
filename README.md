@@ -77,6 +77,33 @@ Due to the fact that certain requirements were not strictly defined the applicat
 - The Friday rush is defined as the period from 3 PM (inclusive) to 7 PM (exclusive).
 - Although the main objective is to calculate delivery fees for future orders, the current implementation allows users to select past dates. Consequently, users can explore the potential delivery cost for a specific date and time in the past.
 
+## Project Structure
+
+│   ...
+├── src
+│   ├── components
+│       ├── DeliveryFeeCalculator.tsx
+│       ├── FormInput.tsx
+│       ├── DeliveryFeeCalculator.css
+│       └── FormInput.css
+│   ├── utils
+│       ├── tests
+│           ├── calculateDeliveryFee.test.ts
+│           ├── calculateDistanceFee.test.ts
+│           ├── calculateItemsSurcharge.test.ts
+│           └── isDuringRushHours.test.ts
+│       ├── calculateDeliveryFee.tsx
+│       ├── calculateDistanceFee.tsx
+│       ├── calculateItemsSurcharge.tsx
+│       └── isDuringRushHours.tsx
+│   ...
+│   ├── App.tsx
+│   ├── App.css
+│   ├── main.tsx
+│   ...
+├── package.json
+└── README.md
+
 ## Inspirations
 
 This project was inspired by the web development tutorial by [Lama Dev](https://youtu.be/tIdNeoHniEY?si=x-pBEeNngmGOSdpb).
