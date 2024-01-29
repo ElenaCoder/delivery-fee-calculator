@@ -57,7 +57,7 @@ const DeliveryFeeCalculator: React.FC = () => {
                 'Please enter a valid number of items (positive whole number).',
             label: 'Amount of items',
             required: true,
-            pattern: '^[0-9]+$',
+            pattern: '^[1-9][0-9]*$',
             value: values.AmountOfItems,
             onChange: (e) => onChange(e),
             'data-test-id':'numberOfItems'
